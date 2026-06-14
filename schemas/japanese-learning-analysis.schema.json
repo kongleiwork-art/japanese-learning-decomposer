@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/japanese-learning-analysis.schema.json",
+  "title": "Japanese Learning Analysis",
+  "type": "object",
+  "required": ["meta", "source", "overview", "vocabulary", "intensiveReading", "learningFocus", "review"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["sourceType", "mode", "estimatedJlpt", "requiresHumanReview"],
+      "additionalProperties": false,
+      "properties": {
+        "sourceType": {
+          "type": "string",
+          "enum": ["text", "image", "image_sequence", "mixed", "unknown"]
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["quick", "standard", "intensive", "html", "json_export"]
+        },
+        "pageCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "layout": {
+          "type": "string",
+          "enum": ["horizontal", "vertical", "multi_column", "speech_bubbles", "mixed", "not_applicable", "unknown"]
+        },
+        "estimatedJlpt": {
+          "type": "string",
+          "pattern": "^(N5|N4|N3|N2|N1|N2-N1|unknown)$"
+        },
+        "ocrConfidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low", "not_applicable", "unknown"]
+        },
+        "requiresHumanReview": {
+          "type": "boolean"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["rawText", "normalizedText", "fullReading", "paragraphs", "paragraphReadings", "uncertainSpans", "normalizationChanges"],
+      "additionalProperties": false,
+      "properties": {
+        "rawText": { "type": "string" },
+        "normalizedText": { "type": "string" },
+        "fullReading": { "type": "string" },
+        "paragraphs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "paragraphReadings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["paragraphIndex", "original", "reading"],
+            "additionalProperties": false,
+            "properties": {
+              "paragraphIndex": { "type": "integer", "minimum": 0 },
+              "original": { "type": "string" },
+              "reading": { "type": "string" }
+            }
+          }
+        },
+        "uncertainSpans": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/uncertainSpan" }
+        },
+        "normalizationChanges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["before", "after", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "before": { "type": "string" },
+              "after": { "type": "string" },
+              "reason": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "overview": {
+      "type": "object",
+      "required": ["contentType", "summaryZh", "guide", "tone", "style"],
+      "additionalProperties": false,
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": ["word", "phrase", "sentence", "dialogue", "short_passage", "long_article", "novel", "manga_or_game_dialogue", "chat_or_social_media", "business_text", "practical_text", "mixed_text", "unknown"]
+        },
+        "summaryZh": { "type": "string" },
+        "guide": { "type": "string" },
+        "tone": { "type": "string" },
+        "style": { "type": "string" }
+      }
+    },
+    "vocabulary": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/vocabularyItem" }
+    },
+    "readingOverrides": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["surface", "reading", "reason", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "surface": { "type": "string" },
+          "reading": { "type": "string" },
+          "reason": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      },
+      "default": []
+    },
+    "intensiveReading": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/paragraphAnalysis" }
+    },
+    "learningFocus": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "review": {
+      "type": "object",
+      "required": ["status", "warnings"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pending", "reviewed", "needs_revision"]
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "uncertainSpan": {
+      "type": "object",
+      "required": ["text", "confidence", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "confidence": { "type": "string", "enum": ["medium", "low"] },
+        "candidates": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "reason": { "type": "string" }
+      }
+    },
+    "vocabularyItem": {
+      "type": "object",
+      "required": ["id", "word", "kana", "lemma", "partOfSpeech", "meaningInContext", "basicMeaning", "sourceSentence", "importance"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "word": { "type": "string" },
+        "kana": { "type": "string" },
+        "lemma": { "type": "string" },
+        "partOfSpeech": { "type": "string" },
+        "meaningInContext": { "type": "string" },
+        "basicMeaning": { "type": "string" },
+        "sourceSentence": { "type": "string" },
+        "collocation": { "type": "string" },
+        "learningNote": { "type": "string" },
+        "jlptEstimate": { "type": "string" },
+        "importance": { "type": "string", "enum": ["high", "medium", "low"] },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "paragraphAnalysis": {
+      "type": "object",
+      "required": ["paragraphIndex", "translation", "summary", "firstCatch", "sentenceTranslations", "sentenceBreakdown", "dictionaryCheck", "grammar", "expressionNotes", "readingTips", "readingNote", "notes", "vocabularyIds"],
+      "additionalProperties": false,
+      "properties": {
+        "paragraphIndex": { "type": "integer", "minimum": 0 },
+        "translation": { "type": "string" },
+        "summary": { "type": "string" },
+        "firstCatch": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "sentenceTranslations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sentenceTranslation" }
+        },
+        "sentenceBreakdown": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/sentenceBreakdown" }
+        },
+        "dictionaryCheck": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/dictionaryCheck" }
+        },
+        "grammar": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/grammarNote" }
+        },
+        "expressionNotes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/expressionNote" }
+        },
+        "readingTips": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "readingNote": { "type": "string" },
+        "notes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "vocabularyIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "sentenceTranslation": {
+      "type": "object",
+      "required": ["sentence", "reading", "translation", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "sentence": { "type": "string" },
+        "reading": { "type": "string" },
+        "translation": { "type": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+      }
+    },
+    "sentenceBreakdown": {
+      "type": "object",
+      "required": ["sentence", "translation", "readInOrder", "chunks"],
+      "additionalProperties": false,
+      "properties": {
+        "sentence": { "type": "string" },
+        "translation": { "type": "string" },
+        "readInOrder": { "type": "string" },
+        "chunks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/chunk" }
+        }
+      }
+    },
+    "chunk": {
+      "type": "object",
+      "required": ["text", "role", "explanation"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string" },
+        "role": { "type": "string" },
+        "explanation": { "type": "string" }
+      }
+    },
+    "dictionaryCheck": {
+      "type": "object",
+      "required": ["word", "reading", "partOfSpeech", "basicMeaning", "contextMeaning", "reason", "notThisMeaning", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "word": { "type": "string" },
+        "reading": { "type": "string" },
+        "partOfSpeech": { "type": "string" },
+        "basicMeaning": { "type": "string" },
+        "contextMeaning": { "type": "string" },
+        "reason": { "type": "string" },
+        "notThisMeaning": { "type": "string" },
+        "relatedExpression": { "type": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+      }
+    },
+    "grammarNote": {
+      "type": "object",
+      "required": ["pattern", "meaning", "sourceSentence", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "pattern": { "type": "string" },
+        "meaning": { "type": "string" },
+        "sourceSentence": { "type": "string" },
+        "breakdown": { "type": "string" },
+        "note": { "type": "string" },
+        "usage": { "type": "string" },
+        "commonMistake": { "type": "string" },
+        "compare": { "type": "string" },
+        "example": { "type": "string" },
+        "exampleZh": { "type": "string" }
+      }
+    },
+    "expressionNote": {
+      "type": "object",
+      "required": ["expression", "naturalMeaning", "explanation"],
+      "additionalProperties": false,
+      "properties": {
+        "expression": { "type": "string" },
+        "literalMeaning": { "type": "string" },
+        "naturalMeaning": { "type": "string" },
+        "nuance": { "type": "string" },
+        "context": { "type": "string" },
+        "explanation": { "type": "string" }
+      }
+    }
+  }
+}

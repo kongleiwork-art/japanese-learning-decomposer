@@ -1,0 +1,7 @@
+interface:
+  display_name: "日语可学习化拆解"
+  short_description: "把任意日语文字或截图转成可读可学、适合保存复习的精读笔记"
+  default_prompt: "Use $japanese-learning-decomposer to turn this Japanese text or screenshot into a Chinese learning note."
+
+policy:
+  allow_implicit_invocation: true

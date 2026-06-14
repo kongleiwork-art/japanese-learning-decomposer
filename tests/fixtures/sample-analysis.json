@@ -1,0 +1,167 @@
+{
+  "meta": {
+    "sourceType": "text",
+    "mode": "standard",
+    "pageCount": 0,
+    "layout": "not_applicable",
+    "estimatedJlpt": "N3",
+    "ocrConfidence": "not_applicable",
+    "requiresHumanReview": false
+  },
+  "source": {
+    "rawText": "そういうつもりで言ったわけじゃない。",
+    "normalizedText": "そういうつもりで言ったわけじゃない。",
+    "fullReading": "そういう つもりで いった わけじゃない。",
+    "paragraphs": [
+      "そういうつもりで言ったわけじゃない。"
+    ],
+    "paragraphReadings": [
+      {
+        "paragraphIndex": 0,
+        "original": "そういうつもりで言ったわけじゃない。",
+        "reading": "そういう つもりで いった わけじゃない。"
+      }
+    ],
+    "uncertainSpans": [],
+    "normalizationChanges": []
+  },
+  "overview": {
+    "contentType": "sentence",
+    "summaryZh": "说话人在否认对方理解出的意图。",
+    "guide": "先抓「そういうつもり」理解被否认的意图，再看「わけじゃない」确认是在否定结论。",
+    "tone": "解释、辩解，语气比直接否定更委婉。",
+    "style": "日常口语"
+  },
+  "vocabulary": [
+    {
+      "id": "source-001-word-01",
+      "word": "つもり",
+      "kana": "つもり",
+      "lemma": "つもり",
+      "partOfSpeech": "名词",
+      "meaningInContext": "意图；打算",
+      "basicMeaning": "打算；意图；自认为",
+      "sourceSentence": "そういうつもりで言ったわけじゃない。",
+      "collocation": "そういうつもりで",
+      "learningNote": "这里表示说话时的主观意图。",
+      "jlptEstimate": "N4",
+      "importance": "high",
+      "tags": ["口语", "意图"]
+    },
+    {
+      "id": "source-001-word-02",
+      "word": "わけじゃない",
+      "kana": "わけじゃない",
+      "lemma": "わけではない",
+      "partOfSpeech": "表达",
+      "meaningInContext": "并不是说；并不代表",
+      "basicMeaning": "否定某个结论或解释",
+      "sourceSentence": "そういうつもりで言ったわけじゃない。",
+      "collocation": "〜わけじゃない",
+      "learningNote": "不是单纯否定动作，而是否定对方推出来的意思。",
+      "jlptEstimate": "N3",
+      "importance": "high",
+      "tags": ["语法", "口语"]
+    }
+  ],
+  "readingOverrides": [],
+  "intensiveReading": [
+    {
+      "paragraphIndex": 0,
+      "translation": "我不是怀着那种意思说的。",
+      "summary": "说话人否认自己说话时带有对方理解的那种意图。",
+      "firstCatch": [
+        "先抓「そういうつもり」确认被否认的是“那种意图”。",
+        "再看「わけじゃない」理解说话人是在否定对方推出来的结论。"
+      ],
+      "sentenceTranslations": [
+        {
+          "sentence": "そういうつもりで言ったわけじゃない。",
+          "reading": "そういう つもりで いった わけじゃない。",
+          "translation": "我不是怀着那种意思说的。",
+          "confidence": "high"
+        }
+      ],
+      "sentenceBreakdown": [
+        {
+          "sentence": "そういうつもりで言ったわけじゃない。",
+          "translation": "我不是怀着那种意思说的。",
+          "readInOrder": "先读「そういうつもりで」确认“以那种意图”，再读「言った」知道动作是“说了”，最后读「わけじゃない」把前面的解释整体否定掉。",
+          "chunks": [
+            {
+              "text": "そういうつもりで",
+              "role": "意图/背景",
+              "explanation": "说明对方以为说话人带着某种意图。"
+            },
+            {
+              "text": "言った",
+              "role": "动作",
+              "explanation": "动作是“说了”。"
+            },
+            {
+              "text": "わけじゃない",
+              "role": "否定解释",
+              "explanation": "否定对方推出来的解释或结论。"
+            }
+          ]
+        }
+      ],
+      "dictionaryCheck": [
+        {
+          "word": "つもり",
+          "reading": "つもり",
+          "partOfSpeech": "名词",
+          "basicMeaning": "打算；意图。",
+          "contextMeaning": "本文指说话时的主观意图。",
+          "reason": "前面有「そういう」，后面接「で言った」，说明是在解释“以那种意图说”。",
+          "notThisMeaning": "不是“自以为”的用法。",
+          "relatedExpression": "〜つもりで言う",
+          "confidence": "high"
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "〜わけじゃない",
+          "meaning": "并不是说……；并不代表……",
+          "sourceSentence": "そういうつもりで言ったわけじゃない。",
+          "breakdown": "普通形 + わけじゃない",
+          "note": "原句用「言ったわけじゃない」否定的是“我说这句话代表那种意图”这个解释。",
+          "usage": "用于否定对方的理解、推论或某种解释。",
+          "commonMistake": "不要理解成单纯的「言わなかった」，因为说话这件事已经发生了。",
+          "compare": "〜わけではない",
+          "example": "嫌いなわけじゃないけど、今日は食べたくない。",
+          "exampleZh": "不是讨厌，只是今天不想吃。"
+        }
+      ],
+      "expressionNotes": [
+        {
+          "expression": "そういうつもりで言ったわけじゃない",
+          "literalMeaning": "不是以那种意图说的。",
+          "naturalMeaning": "我不是那个意思。",
+          "nuance": "带有解释和缓和误会的感觉。",
+          "context": "常用于对方误解自己的话时。",
+          "explanation": "这句话重点不是否认自己说过，而是否认“说话背后的意图”。"
+        }
+      ],
+      "readingTips": [
+        "看到「つもりで」先把它当作“以某种意图”来读。",
+        "句末「わけじゃない」通常是在否定一种解释，而不只是普通否定。"
+      ],
+      "readingNote": "这句话很适合用来缓和误会，比直接说「違う」更有解释感。",
+      "notes": [],
+      "vocabularyIds": [
+        "source-001-word-01",
+        "source-001-word-02"
+      ]
+    }
+  ],
+  "learningFocus": [
+    "「つもり」表示主观意图。",
+    "「〜わけじゃない」是否定对方推出来的解释。",
+    "这类句子常用于解释误会。"
+  ],
+  "review": {
+    "status": "reviewed",
+    "warnings": []
+  }
+}
